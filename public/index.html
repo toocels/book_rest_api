@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Toocels</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link class="test" rel="icon" type="image/x-icon" href="/extras/images/awesome_circle.png">
+
+	<!-- <link rel="stylesheet" href="/extras/bootstrap_css/bootstrap.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="/extras/common/basic_styles.css"> -->
+	<script type="text/javascript" src="/extras/common/authUser.js"></script>
+	<link rel="stylesheet" type="text/css" href="/extras/common/navbar.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+	<div w3-include-html="/extras/common/navbar.html"></div>
+
+	<header>
+		<div id="page_heading">Blogs</div>
+		<hr>
+		<div id="blog_top_part">
+			<div id="search_blogs">Search:<input id="search_blogs_field" autocomplete="off" type="text" name="search" placeholder="Search.." /></div>
+			<button id="new_blog_add" onclick="redirect('/blogs/blog_create')">Add New Blog</button>
+		</div>
+	</header>
+
+	<main>
+		<div id="all_blogs">
+			<hr>
+		</div>
+	</main>
+
+
+	<script type="text/javascript" src="/extras/common/functions.js"></script>
+	<script type="text/javascript" src="/extras/common/navbar.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+</body>
+
+</html>

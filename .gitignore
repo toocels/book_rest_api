@@ -1,0 +1,8 @@
+/node_modules/
+/public/storage/files/
+toocels_web.sql
+main.sublime-workspace
+package.json
+package-lock.json
+.env
+
