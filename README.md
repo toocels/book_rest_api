@@ -1,7 +1,27 @@
+NOT CASE SENSITIVE
 
+/////////////////////////////////////////////////
 
-This is a personal website.
+WITH BODY
 
-Don't plan on spending money to buy domain, so only tested/intended to run on localhost. *dab*
+POST - add new book
+Expected: in "/api"
+Body: {books:[[id, name, author],...]
+Will reply: in {stat:"ok"} {stat:"err"}
 
-:)
+PUT  - update data
+Expected: in "/api"
+Body: {book:{id, name, author}}		// id is identifier for the data to be updated
+Will reply: in {stat:"ok"} {stat:"err"}
+
+/////////////////////////////////////////////////
+
+WITHOUT BODY
+
+GET    - get book, by id, or all
+Expected: in "/api" ?data=all or data=specific & id=num or name=nm & author=auth
+Will reply: in {books:[[id, name, author],...]}
+
+DELETE - delete book
+Expected: in "/api" ?data=all or data=specific & id=num or name=nm & author=auth
+Will reply: in {stat:"ok"} {stat:"err"}

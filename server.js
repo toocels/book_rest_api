@@ -25,7 +25,7 @@ class Database {
 			if (err) {
 				var database_init_cmds = ['create database bookstore;',
 					'use bookstore;',
-					'create table books (id int unique auto_increment, name varchar(64), author varchar(64), description text);'
+					'create table books (id int unique auto_increment, name varchar(64), author unique varchar(64), description text);'
 				]
 				for (var command in database_init_cmds)
 					this.runQuery(database_init_cmds[command], (err, data) => {})
@@ -52,7 +52,10 @@ app = express();
 app.use(express.static("public")) // to serve the html, css, js stuff
 
 app.get('/api/*', (req, res) => {
+	const urlParams = new URLSearchParams(req._parsedUrl.search);
 	console.log(req.params[0].split('/')) // from client
+	console.log("delete:",urlParams.get('data'));
+
 	res.send(JSON.stringify({
 		"stat": "get_ok"
 	})) // reply
