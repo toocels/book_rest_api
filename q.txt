@@ -5,9 +5,7 @@ POST – adds a new book to the directory of books.
 PUT – updates any existing book in the directory.
 DELETE – delete any existing book from the directory. 
 
-
 Deliverables: 
-
 
 Source code for the application.
 Steps to set up the server. 
@@ -15,35 +13,7 @@ API definition and how to test them.
 About the source / any detailed information about the app.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+id    book_name    author   
 
 
 

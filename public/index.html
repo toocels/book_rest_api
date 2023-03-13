@@ -6,38 +6,30 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link class="test" rel="icon" type="image/x-icon" href="/extras/images/awesome_circle.png">
-
-	<!-- <link rel="stylesheet" href="/extras/bootstrap_css/bootstrap.min.css"> -->
-	<!-- <link rel="stylesheet" type="text/css" href="/extras/common/basic_styles.css"> -->
-	<script type="text/javascript" src="/extras/common/authUser.js"></script>
-	<link rel="stylesheet" type="text/css" href="/extras/common/navbar.css">
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="icon" type="image/x-icon" href="./a.png">
 </head>
 
 <body>
+	<script>
+	function test() {
+		fetch(window.location.origin + window.location.pathname + "api?data=him", {method: "GET"}).then((res) => {
+			console.log(res)
+		});
 
-	<div w3-include-html="/extras/common/navbar.html"></div>
+		fetch(window.location.origin + window.location.pathname + "api?data=him", {method: "POST"}).then((res)=>{
+			console.log(res)
+		})
 
-	<header>
-		<div id="page_heading">Blogs</div>
-		<hr>
-		<div id="blog_top_part">
-			<div id="search_blogs">Search:<input id="search_blogs_field" autocomplete="off" type="text" name="search" placeholder="Search.." /></div>
-			<button id="new_blog_add" onclick="redirect('/blogs/blog_create')">Add New Blog</button>
-		</div>
-	</header>
+		fetch(window.location.origin + window.location.pathname + "api?data=him", {method: "DELETE"}).then((res)=>{
+			console.log(res)
+		})
 
-	<main>
-		<div id="all_blogs">
-			<hr>
-		</div>
-	</main>
-
-
-	<script type="text/javascript" src="/extras/common/functions.js"></script>
-	<script type="text/javascript" src="/extras/common/navbar.js"></script>
-	<script type="text/javascript" src="main.js"></script>
+		fetch(window.location.origin + window.location.pathname + "api?data=him", {method: "PUT"}).then((res)=>{
+			console.log(res)
+		})
+	}
+	</script>
+	<button onclick="test()" style="font-size:32px;">Button</button>
 </body>
 
 </html>
