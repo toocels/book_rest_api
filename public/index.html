@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>Toocels</title>
+	<title>Book Directory</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,8 +11,8 @@
 
 <body>
 	<script>
-	function req(type) {
-		const url = window.location.origin + window.location.pathname + "api?data=him";
+	function reqNoBody(type, parm) {
+		const url = window.location.origin + window.location.pathname + parm;
 		fetch(url, {
 				method: type
 			})
@@ -21,11 +21,23 @@
 				console.log(data)
 			});
 	}
+	function reqBody(type, parm) {
+		const url = window.location.origin + window.location.pathname + parm;
+		fetch(url, {
+				method: type,
+				body:JSON.stringify({"r_u_ok":"yes"})
+			})
+			.then((response) => response.json())
+			.then((data) => {
+				console.log(data)
+			});
+	}
 	</script>
-	<button onclick="req('GET')" style="font-size:32px;">Get</button>
-	<button onclick="req('POST')" style="font-size:32px;">Post</button>
-	<button onclick="req('DELETE')" style="font-size:32px;">Delete</button>
-	<button onclick="req('PUT')" style="font-size:32px;">Put</button>
+	<button onclick="reqNoBody('GET', 'api/name')" style="font-size:32px;">Get</button>
+	<button onclick="reqNoBody('DELETE', 'api/name')" style="font-size:32px;">Delete</button>
+	<br>
+	<button onclick="reqBody('POST','api')" style="font-size:32px;">Post</button>
+	<button onclick="reqBody('PUT','api')" style="font-size:32px;">Put</button>
 </body>
 
 </html>

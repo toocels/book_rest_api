@@ -51,33 +51,53 @@ let main_database = new Database()
 app = express();
 app.use(express.static("public")) // to serve the html, css, js stuff
 
-
-
-app.get('/api', (req, res) => {
-	const urlParams = new URLSearchParams(req._parsedUrl.search);
-	console.log("get:",urlParams.get('data'));
-	res.send(JSON.stringify({"ok-get":"no-get"}));
+app.get('/api/*', (req, res) => {
+	console.log(req.params[0].split('/')) // from client
+	res.send(JSON.stringify({
+		"stat": "get_ok"
+	})) // reply
 })
 
-app.post('/api', (req, res) => {
-	const urlParams = new URLSearchParams(req._parsedUrl.search);
-	console.log("post:",urlParams.get('data'));
-	res.send(JSON.stringify({"ok-get":"no-get"}));
+app.delete('/api', (req, res) => { // no body for get and delete
+	console.log(req.params[0].split('/')) // from client
+	res.send(JSON.stringify({
+		"stat": "delete_ok"
+	})) // reply
 });
 
-app.delete('/api', (req, res) => {
-	const urlParams = new URLSearchParams(req._parsedUrl.search);
-	console.log("delete:",urlParams.get('data'));
-	res.send(JSON.stringify({"ok-get":"no-get"}));
+app.post('/api', (req, res) => {
+	let body = '';
+	req.on('data', data => body += data)
+	req.on('end', () => {
+		res.writeHead(200, {
+			'Content-Type': 'application/json',
+			'Access-Control-Allow-Origin': '*',
+			'Access-Control-Allow-Methods': 'POST, GET',
+		});
+
+		console.log(JSON.parse(body));
+		res.end(JSON.stringify({
+			"ok": "OK"
+		}));
+	});
 });
 
 app.put('/api', (req, res) => {
-	const urlParams = new URLSearchParams(req._parsedUrl.search);
-	console.log("put:",urlParams.get('data'));
-	res.send(JSON.stringify({"ok-get":"no-get"}));
+	let body = '';
+	req.on('data', data => body += data)
+	req.on('end', () => {
+		res.writeHead(200, {
+			'Content-Type': 'application/json',
+			'Access-Control-Allow-Origin': '*',
+			'Access-Control-Allow-Methods': 'POST, GET',
+		});
+
+		console.log(JSON.parse(body));
+		res.end(JSON.stringify({
+			"ok": "OK"
+		}));
+	});
 });
-
-
 
 app.listen(SERVER_PORT, SERVER_IP, error => {
 	if (error) console.log("[ SERVER ]  Error in server startup.");
