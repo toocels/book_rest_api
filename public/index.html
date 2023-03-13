@@ -11,25 +11,21 @@
 
 <body>
 	<script>
-	function test() {
-		fetch(window.location.origin + window.location.pathname + "api?data=him", {method: "GET"}).then((res) => {
-			console.log(res)
-		});
-
-		fetch(window.location.origin + window.location.pathname + "api?data=him", {method: "POST"}).then((res)=>{
-			console.log(res)
-		})
-
-		fetch(window.location.origin + window.location.pathname + "api?data=him", {method: "DELETE"}).then((res)=>{
-			console.log(res)
-		})
-
-		fetch(window.location.origin + window.location.pathname + "api?data=him", {method: "PUT"}).then((res)=>{
-			console.log(res)
-		})
+	function req(type) {
+		const url = window.location.origin + window.location.pathname + "api?data=him";
+		fetch(url, {
+				method: type
+			})
+			.then((response) => response.json())
+			.then((data) => {
+				console.log(data)
+			});
 	}
 	</script>
-	<button onclick="test()" style="font-size:32px;">Button</button>
+	<button onclick="req('GET')" style="font-size:32px;">Get</button>
+	<button onclick="req('POST')" style="font-size:32px;">Post</button>
+	<button onclick="req('DELETE')" style="font-size:32px;">Delete</button>
+	<button onclick="req('PUT')" style="font-size:32px;">Put</button>
 </body>
 
 </html>

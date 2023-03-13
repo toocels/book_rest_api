@@ -48,38 +48,38 @@ class Database {
 }
 
 let main_database = new Database()
-
 app = express();
 app.use(express.static("public")) // to serve the html, css, js stuff
+
+
 
 app.get('/api', (req, res) => {
 	const urlParams = new URLSearchParams(req._parsedUrl.search);
 	console.log("get:",urlParams.get('data'));
-	res.send("ok-get");
+	res.send(JSON.stringify({"ok-get":"no-get"}));
 })
 
 app.post('/api', (req, res) => {
 	const urlParams = new URLSearchParams(req._parsedUrl.search);
 	console.log("post:",urlParams.get('data'));
-	res.send("ok-post");
+	res.send(JSON.stringify({"ok-get":"no-get"}));
 });
 
 app.delete('/api', (req, res) => {
 	const urlParams = new URLSearchParams(req._parsedUrl.search);
 	console.log("delete:",urlParams.get('data'));
-	res.send("ok-delete");
+	res.send(JSON.stringify({"ok-get":"no-get"}));
 });
 
 app.put('/api', (req, res) => {
 	const urlParams = new URLSearchParams(req._parsedUrl.search);
-	console.log("delete:",urlParams.get('data'));
-	res.send("ok-delete");
+	console.log("put:",urlParams.get('data'));
+	res.send(JSON.stringify({"ok-get":"no-get"}));
 });
 
 
+
 app.listen(SERVER_PORT, SERVER_IP, error => {
-	if (error)
-		console.log("[ SERVER ]  Error in server startup.");
-	else
-		console.log("[ SERVER ]  Example app listening at http://" + SERVER_IP + ":" + SERVER_PORT)
+	if (error) console.log("[ SERVER ]  Error in server startup.");
+	else console.log("[ SERVER ]  Example app listening at http://" + SERVER_IP + ":" + SERVER_PORT)
 });
