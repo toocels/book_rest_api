@@ -6,7 +6,7 @@ WITH BODY
 
 POST - add new book
 Expected: in "/api"
-Body: {books:[[id, name, author],...]
+Body: {books:[[name, author],...]
 Will reply: in {stat:"ok"} {stat:"err"}
 
 PUT  - update data

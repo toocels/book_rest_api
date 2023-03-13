@@ -53,8 +53,7 @@ app.use(express.static("public")) // to serve the html, css, js stuff
 
 app.get('/api/*', (req, res) => {
 	const urlParams = new URLSearchParams(req._parsedUrl.search);
-	console.log(req.params[0].split('/')) // from client
-	console.log("delete:",urlParams.get('data'));
+	console.log("GET: ", urlParams.get('data'));
 
 	res.send(JSON.stringify({
 		"stat": "get_ok"
@@ -62,9 +61,11 @@ app.get('/api/*', (req, res) => {
 })
 
 app.delete('/api', (req, res) => { // no body for get and delete
-	console.log(req.params[0].split('/')) // from client
+	const urlParams = new URLSearchParams(req._parsedUrl.search);
+	console.log("DELETE: ", urlParams.get('data'));
+
 	res.send(JSON.stringify({
-		"stat": "delete_ok"
+		"stat": "get_ok"
 	})) // reply
 });
 
@@ -79,6 +80,7 @@ app.post('/api', (req, res) => {
 		});
 
 		console.log(JSON.parse(body));
+
 		res.end(JSON.stringify({
 			"ok": "OK"
 		}));

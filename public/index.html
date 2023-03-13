@@ -11,33 +11,34 @@
 
 <body>
 	<script>
-	function reqNoBody(type, parm) {
-		const url = window.location.origin + window.location.pathname + parm;
-		fetch(url, {
-				method: type
-			})
-			.then((response) => response.json())
-			.then((data) => {
-				console.log(data)
-			});
-	}
-	function reqBody(type, parm) {
-		const url = window.location.origin + window.location.pathname + parm;
-		fetch(url, {
-				method: type,
-				body:JSON.stringify({"r_u_ok":"yes"})
-			})
-			.then((response) => response.json())
-			.then((data) => {
-				console.log(data)
-			});
+	function req(type, urlParm, body_data=undefined) {
+		const url = window.location.origin + window.location.pathname + 'api/' + urlParm;
+		if(body_data!=undefined){
+			return fetch(url, {
+					method: type,
+					body:JSON.stringify(body_data)
+				})
+				.then((response) => response.json())
+				.then((data) => {
+					return data;
+				});
+		}else{
+			return fetch(url, {
+					method: type
+				})
+				.then((response) => response.json())
+				.then((data) => {
+					return data;
+				});
+		}
+		return null;
 	}
 	</script>
-	<button onclick="reqNoBody('GET', 'api/name')" style="font-size:32px;">Get</button>
-	<button onclick="reqNoBody('DELETE', 'api/name')" style="font-size:32px;">Delete</button>
+	<button onclick="req('GET', '?data=all').then((res)=>console.log(res))" style="font-size:32px;">Get</button>
+	<button onclick="req('DELETE', '?data=56').then((res)=>console.log(res))" style="font-size:32px;">Delete</button>
 	<br>
-	<button onclick="reqBody('POST','api')" style="font-size:32px;">Post</button>
-	<button onclick="reqBody('PUT','api')" style="font-size:32px;">Put</button>
+	<button onclick="req('POST', '', {books:[['journey', 'pranav'],['adventure', 'noone']]}).then((res)=>console.log(res))" style="font-size:32px;">Post</button>
+	<button onclick="req('PUT', '', {book:[1, 'journey','pranaveee']}).then((res)=>console.log(res))" style="font-size:32px;">Put</button>
 </body>
 
 </html>
