@@ -51,24 +51,25 @@ let main_database = new Database()
 app = express();
 app.use(express.static("public")) // to serve the html, css, js stuff
 
-app.get('/api/*', (req, res) => {
-	const urlParams = new URLSearchParams(req._parsedUrl.search);
-	console.log("GET: ", urlParams.get('data'));
-
+app.get('/api', (req, res) => {
 	main_database.runQuery('select * from books;', (err, data) => {
+		if (err) console.log("[ MYSQL ] error get book");
+
 		res.send(JSON.stringify({
-			"books": data
-		}))
+		"books": data
+	}))
 	})
-	//insert into books(name,author,description) values ("Journey","Pranav","About a journey");
 })
 
 app.delete('/api', (req, res) => { // no body for get and delete
 	const urlParams = new URLSearchParams(req._parsedUrl.search);
-	console.log("DELETE: ", urlParams.get('data'));
+
+	main_database.runQuery("DELETE FROM books WHERE id=" + urlParams.get('id'), (err, data) => {
+		if (err) console.log("[ MYSQL ] error deleting book");
+	})
 
 	res.send(JSON.stringify({
-		"stat": "get_ok"
+		"stat": "ok"
 	}))
 });
 
@@ -90,7 +91,7 @@ app.post('/api', (req, res) => {
 				if (err) err_stat = true;
 			})
 		}
-		if (err_stat) console.log("[ MYSQL ]Error when writing to mysql")
+		if (err_stat) console.log("[ MYSQL ] error post book")
 
 		res.end(JSON.stringify({
 			"result": "ok"

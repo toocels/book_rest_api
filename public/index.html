@@ -11,20 +11,25 @@
 </head>
 
 <body>
-	<button onclick="getReq()" style="font-size:32px;">Get</button>
-	<button onclick="req('DELETE', '?data=56').then((res)=>console.log(res))" style="font-size:32px;">Delete</button>
+	<button onclick="getReq()">Get</button>
 	<br>
-	<button onclick="req('PUT', '', {book:[1, 'journey','pranaveee']}).then((res)=>console.log(res))" style="font-size:32px;">Put</button>
+	<button onclick="req('PUT', '', {book:[1, 'journey','pranaveee']}).then((res)=>console.log(res))" >Put</button>
 
 	<br><br><br>
 
-	<br>
-	<hr>
+	<br><hr>
 	<form>
-		Enter Name:<input type="text" id="name_i"><br>
-		Enter Author:<input type="text" id="author_i"><br>
-		Enter description:<input type="text" id="description_i"><br>
-		<button onclick="req('POST', '', {books:[['journssey', 'spranav','descp1s']]}).then((res)=>console.log(res))" style="font-size:32px;">Post</button>
+		Enter Name:<input type="text" id="post_name_i"><br>
+		Enter Author:<input type="text" id="post_author_i"><br>
+		Enter description:<input type="text" id="post_description_i"><br>
+		<button class="custom-btn" onclick="postReq()">Post</button>
+	</form>
+	<hr><br>
+
+	<br><hr>
+	<form>
+		Enter Id:<input type="text" id="delete_id_i"><br>
+		<button class="custom-btn" onclick="deleteReq()">Delete</button>
 	</form>
 	<hr><br>
 
@@ -32,7 +37,7 @@
 	<hr><hr>
 	<div id="list_of_books" class="flex-container">
 		<div id="list_x">
-			<span>Name</span><span>Author</span><span>Descriotion</span>
+			<span>Id</span><span>Name</span><span>Author</span><span>Descriotion</span>
 		</div>
 		<hr>
 		<hr>
