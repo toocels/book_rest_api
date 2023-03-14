@@ -25,7 +25,7 @@ class Database {
 			if (err) {
 				var database_init_cmds = ['create database bookstore;',
 					'use bookstore;',
-					'create table books (id int unique auto_increment, name varchar(64), author unique varchar(64), description text);'
+					'create table books (id int unique auto_increment, name varchar(64), author varchar(64), description text);'
 				]
 				for (var command in database_init_cmds)
 					this.runQuery(database_init_cmds[command], (err, data) => {})
@@ -55,9 +55,12 @@ app.get('/api/*', (req, res) => {
 	const urlParams = new URLSearchParams(req._parsedUrl.search);
 	console.log("GET: ", urlParams.get('data'));
 
-	res.send(JSON.stringify({
-		"stat": "get_ok"
-	})) // reply
+	main_database.runQuery('select * from books;', (err, data) => {
+		res.send(JSON.stringify({
+			"books": data
+		}))
+	})
+	//insert into books(name,author,description) values ("Journey","Pranav","About a journey");
 })
 
 app.delete('/api', (req, res) => { // no body for get and delete
@@ -66,7 +69,7 @@ app.delete('/api', (req, res) => { // no body for get and delete
 
 	res.send(JSON.stringify({
 		"stat": "get_ok"
-	})) // reply
+	}))
 });
 
 app.post('/api', (req, res) => {
@@ -79,11 +82,19 @@ app.post('/api', (req, res) => {
 			'Access-Control-Allow-Methods': 'POST, GET',
 		});
 
-		console.log(JSON.parse(body));
+		books = JSON.parse(body)["books"];
+		var err_stat = false;
+		for (i in books) {
+			var cmd = 'INSERT INTO books (name,author,description) VALUES (\"' + books[i][0] + '\",\"' + books[i][1] + '\",\"' + books[i][2] + '\");'
+			main_database.runQuery(cmd, (err, data) => {
+				if (err) err_stat = true;
+			})
+		}
+		if (err_stat) console.log("[ MYSQL ]Error when writing to mysql")
 
 		res.end(JSON.stringify({
-			"ok": "OK"
-		}));
+			"result": "ok"
+		}))
 	});
 });
 

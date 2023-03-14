@@ -7,38 +7,39 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/x-icon" href="./a.png">
+	<link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
-	<script>
-	function req(type, urlParm, body_data=undefined) {
-		const url = window.location.origin + window.location.pathname + 'api/' + urlParm;
-		if(body_data!=undefined){
-			return fetch(url, {
-					method: type,
-					body:JSON.stringify(body_data)
-				})
-				.then((response) => response.json())
-				.then((data) => {
-					return data;
-				});
-		}else{
-			return fetch(url, {
-					method: type
-				})
-				.then((response) => response.json())
-				.then((data) => {
-					return data;
-				});
-		}
-		return null;
-	}
-	</script>
-	<button onclick="req('GET', '?data=all').then((res)=>console.log(res))" style="font-size:32px;">Get</button>
+	<button onclick="getReq()" style="font-size:32px;">Get</button>
 	<button onclick="req('DELETE', '?data=56').then((res)=>console.log(res))" style="font-size:32px;">Delete</button>
 	<br>
-	<button onclick="req('POST', '', {books:[['journey', 'pranav'],['adventure', 'noone']]}).then((res)=>console.log(res))" style="font-size:32px;">Post</button>
 	<button onclick="req('PUT', '', {book:[1, 'journey','pranaveee']}).then((res)=>console.log(res))" style="font-size:32px;">Put</button>
+
+	<br><br><br>
+
+	<br>
+	<hr>
+	<form>
+		Enter Name:<input type="text" id="name_i"><br>
+		Enter Author:<input type="text" id="author_i"><br>
+		Enter description:<input type="text" id="description_i"><br>
+		<button onclick="req('POST', '', {books:[['journssey', 'spranav','descp1s']]}).then((res)=>console.log(res))" style="font-size:32px;">Post</button>
+	</form>
+	<hr><br>
+
+
+	<hr><hr>
+	<div id="list_of_books" class="flex-container">
+		<div id="list_x">
+			<span>Name</span><span>Author</span><span>Descriotion</span>
+		</div>
+		<hr>
+		<hr>
+		<hr>
+	</div>
+
+	<script type="text/javascript" src="./main.js"></script>
 </body>
 
 </html>
