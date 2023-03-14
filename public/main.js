@@ -69,9 +69,7 @@ function postReq() {
 	var desc = document.getElementById("post_description_i").value;
 
 	req('POST', '', {
-		books: [
-			[name, author, desc]
-		]
+		books: [name, author, desc]
 	}).then((res) => {
 		console.log(res)
 	})
@@ -81,6 +79,21 @@ function deleteReq() {
 	var id = document.getElementById("delete_id_i").value;
 
 	req('DELETE', '?id=' + id).then((res) => {
+		console.log(res)
+	})
+}
+
+function putReq() {
+	var id = document.getElementById("put_id_i").value;
+	var name = document.getElementById("put_name_i").value;
+	var author = document.getElementById("put_author_i").value;
+	var desc = document.getElementById("put_description_i").value;
+
+	console.log('fsdfsd')
+
+	req('PUT', '', {
+		book: [id, name, author, desc]
+	}).then((res) => {
 		console.log(res)
 	})
 }

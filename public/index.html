@@ -11,14 +11,9 @@
 </head>
 
 <body>
-	<button onclick="getReq()">Get</button>
-	<br>
-	<button onclick="req('PUT', '', {book:[1, 'journey','pranaveee']}).then((res)=>console.log(res))" >Put</button>
-
-	<br><br><br>
-
 	<br><hr>
-	<form>
+	<form id="post_req_form">
+		<h1>Post:</h1>
 		Enter Name:<input type="text" id="post_name_i"><br>
 		Enter Author:<input type="text" id="post_author_i"><br>
 		Enter description:<input type="text" id="post_description_i"><br>
@@ -27,7 +22,19 @@
 	<hr><br>
 
 	<br><hr>
-	<form>
+	<form id="put_req_form">
+		<h1>Put:</h1>
+		Enter id:<input type="text" id="put_id_i"><br>
+		Enter Name:<input type="text" id="put_name_i"><br>
+		Enter Author:<input type="text" id="put_author_i"><br>
+		Enter description:<input type="text" id="put_description_i"><br>
+		<button class="custom-btn" onclick="putReq()">Put</button>
+	</form>
+	<hr><br>
+
+	<br><hr>
+	<form id="delete_req_form">
+		<h1>Delete:</h1>
 		Enter Id:<input type="text" id="delete_id_i"><br>
 		<button class="custom-btn" onclick="deleteReq()">Delete</button>
 	</form>

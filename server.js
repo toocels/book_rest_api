@@ -56,8 +56,8 @@ app.get('/api', (req, res) => {
 		if (err) console.log("[ MYSQL ] error get book");
 
 		res.send(JSON.stringify({
-		"books": data
-	}))
+			"books": data
+		}))
 	})
 })
 
@@ -84,14 +84,11 @@ app.post('/api', (req, res) => {
 		});
 
 		books = JSON.parse(body)["books"];
-		var err_stat = false;
-		for (i in books) {
-			var cmd = 'INSERT INTO books (name,author,description) VALUES (\"' + books[i][0] + '\",\"' + books[i][1] + '\",\"' + books[i][2] + '\");'
-			main_database.runQuery(cmd, (err, data) => {
-				if (err) err_stat = true;
-			})
-		}
-		if (err_stat) console.log("[ MYSQL ] error post book")
+
+		var cmd = 'INSERT INTO books (name,author,description) VALUES (\"' + books[0] + '\",\"' + books[1] + '\",\"' + books[2] + '\");'
+		main_database.runQuery(cmd, (err, data) => {
+			if (err) console.log("[ MYSQL ] error post book")
+		})
 
 		res.end(JSON.stringify({
 			"result": "ok"
@@ -109,10 +106,16 @@ app.put('/api', (req, res) => {
 			'Access-Control-Allow-Methods': 'POST, GET',
 		});
 
-		console.log(JSON.parse(body));
+		book = JSON.parse(body)["book"];
+
+		var cmd = 'UPDATE books SET name=\"'+book[1]+'\", author=\"'+book[2]+'\", description=\"'+book[3]+'\" WHERE id='+book[0]+';'
+		main_database.runQuery(cmd, (err, data) => {
+			if (err) console.log("[ MYSQL ] error post book")
+		})
+
 		res.end(JSON.stringify({
-			"ok": "OK"
-		}));
+			"result": "ok"
+		}))
 	});
 });
 

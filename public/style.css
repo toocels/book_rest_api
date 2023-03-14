@@ -31,6 +31,9 @@ hr {
 }
 
 
+input{
+	margin: 5px;
+}
 
 .custom-btn {
 	color: white;
