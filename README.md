@@ -12,6 +12,13 @@ STEPS TO SETUP SERVER
 Need to have installed:
 	-> Nodejs, npm, mysql 
 
+Create a file named ".env" in root folder.
+Enter for eg:
+SQLuser="root"
+SQLpass="password"
+For the program to access mysql database.
+(Mysql by default has different means of authentication, for the program to access database, the SDLuser should have 'native-password' enabled)
+
 Running the program with automatically setup the mysql database, if not present.
 
 The program uses "bookstore" as the name for the database.
