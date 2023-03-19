@@ -25,7 +25,9 @@ refreshBookList();
 
 function req(type, urlParm, body_data = undefined) {
 	// const url = window.location.origin + window.location.pathname + 'api/' + urlParm;
+
 	const url = "http://localhost/api/" + urlParm
+	console.log(url)
 	if (body_data != undefined) {
 		return fetch(url, {
 				method: type,
