@@ -10,31 +10,59 @@ body::-webkit-scrollbar {
 body {
 	background-color: rgb(50, 50, 50);
 	color: white;
+	font-size: 20px;
+	font-weight: 500;
 }
 
-hr {
-	margin: 3px;
+.heading {
+	padding: 0px;
+	margin-right: 10px;
+	font-size: 40px;
 }
 
-#list_x {
-	background-color: rgb(30, 30, 30);
-	min-height: 50px;
-	font-size: 32px;
-	width: 90%;
-	margin: auto;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-	padding: 5px;
-	padding-left: 10px;
-	padding-right: 10px;
+.form {
+	margin: 40px;
+}
+
+.form div {
+	display: inline-block;
+	min-width: 150px;
 }
 
 
-input{
-	margin: 5px;
+/*Table*/
+table {
+	border-collapse: collapse;
+	width: 100%;
+	font-size: 20px;
 }
 
+table td,
+table th {
+	border: 1px solid #ddd;
+	padding: 10px;
+}
+
+table tr:nth-child(even) {
+	background-color: rgb(20, 20, 20);
+}
+
+table tr:nth-child(1) {
+	background-color: rgb(30, 30, 150);
+}
+
+table th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	background-color: #04AA6D;
+	color: white;
+}
+
+/*Table*/
+
+
+/*Button*/
 .custom-btn {
 	color: white;
 	font-weight: bolder;
@@ -71,3 +99,5 @@ input{
 	top: 0;
 	height: 100%;
 }
+
+/*Button*/

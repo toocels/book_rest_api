@@ -11,47 +11,54 @@
 </head>
 
 <body>
-	<br><hr>
-	<form id="post_req_form">
-		<h1>Post:</h1>
-		Enter Name:<input type="text" id="post_name_i"><br>
-		Enter Author:<input type="text" id="post_author_i"><br>
-		Enter description:<input type="text" id="post_description_i"><br>
-		<button class="custom-btn" onclick="postReq()">Post</button>
-	</form>
-	<hr><br>
-
-	<br><hr>
-	<form id="put_req_form">
-		<h1>Put:</h1>
-		Enter id:<input type="text" id="put_id_i"><br>
-		Enter Name:<input type="text" id="put_name_i"><br>
-		Enter Author:<input type="text" id="put_author_i"><br>
-		Enter description:<input type="text" id="put_description_i"><br>
-		<button class="custom-btn" onclick="putReq()">Put</button>
-	</form>
-	<hr><br>
-
-	<br><hr>
-	<form id="delete_req_form">
-		<h1>Delete:</h1>
-		Enter Id:<input type="text" id="delete_id_i"><br>
-		<button class="custom-btn" onclick="deleteReq()">Delete</button>
-	</form>
-	<hr><br>
-
-
-	<hr><hr>
-	<div id="list_of_books" class="flex-container">
-		<div id="list_x">
-			<span>Id</span><span>Name</span><span>Author</span><span>Descriotion</span>
-		</div>
+	<div>
 		<hr>
-		<hr>
+		Tutorial:<br> <br>
+		Post req: type out the information and click to enter boko into database.<br> <br>
+		Put req: Search the id of the book to be updated, and enter id, and updated information, if dont want to update some information, leave it blank<br> <br>
+		Delete req: Search the id of the book to be deleted, enter it and click delete.
 		<hr>
 	</div>
 
-	<script type="text/javascript" src="./main.js"></script>
+	<div id="post_req_form" class="form">
+		<span class="heading">Post:</span class="heading">
+		<span id="post_reply"> </span>
+		<br>
+		<div>Enter Name:</div> <input type="text" id="post_name_i"> <br>
+		<div>Enter Author:</div> <input type="text" id="post_author_i"> <br>
+		<div>Enter description:</div> <input type="text" id="post_description_i"> <br>
+		<button class="custom-btn" onclick="postReq()">Post</button>
+	</div>
+
+	<div id="put_req_form" class="form">
+		<span class="heading">Put:</span class="heading">
+		<span id="put_reply"> </span>
+		<br>
+		<div>Enter id:</div> <input type="text" id="put_id_i"> <br>
+		<div>Enter Name:</div> <input type="text" id="put_name_i"> <br>
+		<div>Enter Author:</div> <input type="text" id="put_author_i"> <br>
+		<div>Enter description:</div> <input type="text" id="put_description_i"> <br>
+		<button class="custom-btn" onclick="putReq()">Put</button>
+	</div>
+
+	<div id="delete_req_form" class="form">
+		<span class="heading">Delete:</span class="heading">
+		<span id="delete_reply"> </span>
+		<br>
+		<div>Enter Id:</div> <input type="text" id="delete_id_i"> <br>
+		<button class="custom-btn" onclick="deleteReq()">Delete</button>
+	</div>
+
+	<hr>
+	<div id="explore_books">
+		Search: <input id="search_books" name=""> <br> <br>
+		<table id="list_of_books">
+		</table>
+	</div>
+
+	<br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+
+	<script type="text/javascript" src="./main.js"> </script>
 </body>
 
 </html>
